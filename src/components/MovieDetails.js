@@ -17,7 +17,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     getGenres(API_GENRES);
-  })
+  }, [])
 
   const getGenres = () => {
     fetch(API_GENRES)
