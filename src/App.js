@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 import MovieCard from './components/MovieCard';
 import { useHistory } from 'react-router';
 import MyContext from './context/Context';
+import axios from 'axios';
 
 function App() {
   const {movies, setMovies} = useContext(MyContext);
@@ -13,12 +14,8 @@ function App() {
   let history = useHistory();
 
   useEffect(() => {
-    fetch(API_PAGE1)
-    .then((res) => res.json())
-    .then((data) => {
-      setMovies(data.results);
-    })
-  }, [setMovies])
+    axios.get(API_PAGE1).then((res) => setMovies(res.data.results));
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
