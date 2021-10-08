@@ -13,16 +13,12 @@ function App() {
   let history = useHistory();
 
   useEffect(() => {
-    getMovies(API_PAGE1);
-  }, [])
-
-  const getMovies = () => {
     fetch(API_PAGE1)
     .then((res) => res.json())
     .then((data) => {
       setMovies(data.results);
     })
-  }
+  }, [setMovies])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +47,7 @@ function App() {
   return (
     <div>
       <div className="header-home">
-        <h1>Movies API</h1>
+        <h1>Movies API 2.0</h1>
       </div>
       <div className="sub-header-home">
         <form onSubmit={handleSubmit}>
