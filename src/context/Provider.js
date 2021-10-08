@@ -6,6 +6,7 @@ function Provider({ children }) {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
   const [movieInfo, setMovieInfo] = useState([]);
+  const [genres, setGenres] = useState([]);
   
   const contextValue = {
     movies,
@@ -13,7 +14,9 @@ function Provider({ children }) {
     search,
     setSearch,
     movieInfo,
-    setMovieInfo
+    setMovieInfo,
+    genres,
+    setGenres
   };
 
   return (

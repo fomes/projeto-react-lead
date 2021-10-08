@@ -1,7 +1,7 @@
 import '../App.css';
 import  { API_IMG, API_GENRES } from '../API';
 import { useHistory } from 'react-router';
-import { useEffect, useState } from 'react/cjs/react.development';
+import { useEffect } from 'react/cjs/react.development';
 import MyContext from '../context/Context';
 import { useContext } from 'react';
 
@@ -9,7 +9,7 @@ export default function MovieDetails() {
   let history = useHistory();
 
   const { movieInfo } = useContext(MyContext);
-  const [genres, setGenres] = useState([]);
+  const {genres, setGenres} = useContext(MyContext);
   const { title, poster_path, overview, vote_average, release_date, genre_ids } = movieInfo[0];
 
   const moveToHome = () => {
@@ -17,16 +17,12 @@ export default function MovieDetails() {
   }
 
   useEffect(() => {
-    getGenres(API_GENRES);
-  }, [])
-
-  const getGenres = () => {
     fetch(API_GENRES)
     .then((res) => res.json())
     .then((data) => {
       setGenres(data.genres);
     })
-  }
+  })
 
   return (
     <>
