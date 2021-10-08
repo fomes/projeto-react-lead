@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './components/AppRouter';
+import Provider from './context/Provider';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider>
     <AppRouter />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

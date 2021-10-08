@@ -1,12 +1,14 @@
 import './App.css';
 import  { API_PAGE1, API_SEARCH } from './API';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import MovieCard from './components/MovieCard';
 import { useHistory } from 'react-router';
+import MyContext from './context/Context';
 
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState('');
+  const {movies, setMovies} = useContext(MyContext);
+  const {search, setSearch} = useContext(MyContext);
+  const {setMovieInfo} = useContext(MyContext);
 
   let history = useHistory();
 
@@ -42,7 +44,7 @@ function App() {
 
   const handleDetails = (e) => {
     const filteredMovie = movies.filter((movie) => movie.id === e);
-    localStorage.setItem('movieDetails', JSON.stringify(filteredMovie[0]));
+    setMovieInfo(filteredMovie);
     history.push('/details');
   }
 
